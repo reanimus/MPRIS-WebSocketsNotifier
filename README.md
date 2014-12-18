@@ -2,7 +2,7 @@
 
 A simple Python webserver to notify WebSockets clients of MPRIS client notifications.
 
-Makes use of a modified version of [dnarvaez/gwebsockets](https://github.com/dnarvaez/gwebsockets) updated to support Python 3 and handle some edge cases better.
+Makes use of a modified version of [dnarvaez/gwebsockets](https://github.com/dnarvaez/gwebsockets) updated to support Python 3 and handle some edge cases better. A lot of the DBUS-related code uses the [MPRIS example from VLC](https://www.videolan.org/developers/vlc/extras/misc/mpris.py) as a reference.
 
 ## Dependencies
 - Python 3
@@ -19,3 +19,7 @@ Makes use of a modified version of [dnarvaez/gwebsockets](https://github.com/dna
 ## TODO
 - Maybe add a frontend?
 - Code could probably be cleaned up
+
+## License Info
+- gwebsockets related stuff is under the Apache License
+- the rest is under GPL
