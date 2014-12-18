@@ -60,9 +60,10 @@ def PropertiesChanged(interface, changed_props, invalidated_props):
 
 # Notify a session (or all sessions) of current state
 def Notify(Session = None):
-    Track = GetProperty('Metadata')
-    TrackChange(Track, Session)
     GetPlayStatus(Session)
+    if GetProperty('PlaybackStatus') == 'Playing' or GetProperty('PlaybackStatus') == 'Paused':
+        Track = GetProperty('Metadata')
+        TrackChange(Track, Session)
 
 # Track has changed, notify a session (or all of them)
 def TrackChange(Track, OutboundSession = None):
@@ -167,8 +168,7 @@ def SetSource(Name):
     media_root.connect_to_signal('PropertiesChanged', PropertiesChanged)
 
     # If something's playing, send info on it!
-    if GetProperty('PlaybackStatus') == 'Playing' or GetProperty('PlaybackStatus') == 'Paused':
-        Notify()
+    Notify()
 
 # The actual program is here
 # Set the glib main loop as the one for DBUS
