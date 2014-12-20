@@ -23,7 +23,6 @@ and bower (essentially, the Foundation SCSS build requirements.
 - Notifies connected clients over WebSockets and sends JSON data for data that's changed
 
 ## TODO
-- Maybe add a frontend?
 - Code could probably be cleaned up
 
 ## License Info
