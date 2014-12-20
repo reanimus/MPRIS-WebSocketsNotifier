@@ -78,6 +78,10 @@ def TrackChange(Track, OutboundSession = None):
     except:
         track = Track['xesam:url']
     try:
+        album = Track['xesam:album']
+    except:
+        album = Track['xesam:album']
+    try:
         length = Track['mpris:length']
     except:
         length = 0
@@ -117,10 +121,11 @@ def TrackChange(Track, OutboundSession = None):
     # Print info
     print("Artist: " + ', '.join(str(x) for x in artist))
     print("Track: " + track)
+    print("Album: " + album)
     print("Length: " + str(length/1000000) + " seconds")
     print("Cover Art: " + coverart)
     print("ID: " + trackid)
-    tosend = json.dumps({ 'artist' : ', '.join(str(x) for x in artist), 'track' : track, 'length' : length/1000000, 'albumart' : coverart })
+    tosend = json.dumps({ 'updateType' : 'track', 'artist' : ', '.join(str(x) for x in artist), 'album' : album, 'track' : track, 'length' : length/1000000, 'albumart' : coverart })
     print("JSON: " + tosend)
     
     # Send JSON info to client(s)
@@ -142,7 +147,7 @@ def GetPlayStatus(Session = None):
     shuffle = GetProperty('Shuffle')
     print("Playing: " + str(playing))
     print("Shuffle: " + str(shuffle))
-    tosend = json.dumps({ 'playing' : playing, 'shuffle': shuffle })
+    tosend = json.dumps({ 'updateType' : 'playStatus', 'playing' : playing, 'shuffle': shuffle })
     print("JSON: " + tosend)
     
     # send info
